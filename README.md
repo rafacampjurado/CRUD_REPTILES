@@ -20,5 +20,4 @@ El trabajo constará de una base de datos con 3 tablas :
   - Nombre
   - Apellidos
   - DNI
-  dedwad
 
