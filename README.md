@@ -1,5 +1,6 @@
 # ----TRABAJO CRUD----
-##Información
+## Información
+-**Tema :** Crianza y venta de crías de reptiles.
 El trabajo constará de una base de datos con 3 tablas :
 - Ficha Gecko
   - Código
