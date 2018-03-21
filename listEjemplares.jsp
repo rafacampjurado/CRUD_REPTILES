@@ -83,14 +83,16 @@
                                                             <th>Fase</th>
                                                             <th>Especie</th>
                                                             <th>Sexo</th>
-                                                            <th>Criar</th>
+                                                            
+                                                            
                                                             </thead>
                                                             <tbody>
                                                                 <%                                                                    ResultSet listado = s.executeQuery("SELECT * FROM geckos ");
 
                                                                     while (listado.next()) {
                                                                         out.println("<tr><td>" + listado.getString("nombre") + "</td><td>" + listado.getString("fase") + "</td><td>" + listado.getString("especie") + "</td><td>"
-                                                                                + listado.getString("sexo") + "</td><td><a href='criar.jsp?id=" + listado.getString("codgecko") + "'<button type='button' class='btn btn-primary'>Criar</a></td></tr>");
+                                                                                + listado.getString("sexo") + "</td><td><a href='criar.jsp?id=" + listado.getString("codgecko") + "'<button type='button' class='btn btn-primary'>Criar</a></td>"
+                                                                                        + "<td><a href='editorGecko.jsp?id="+ listado.getString("codgecko") +"'> <i class='fa fa-pencil'> Editar</i></a></td></tr>");
                                                                     }
                                                                 %>
                                                             </tbody>

@@ -9,7 +9,7 @@
 
         <div class="clearfix"></div>
 
-        
+
         <br />
 
         <!-- sidebar menu -->
@@ -18,21 +18,9 @@
                 <h3>Barra de navegación</h3>
                 <ul class="nav side-menu">
                     <li><a href="index.jsp"><i class="fa fa-home"></i>Inicio </a></li>
-
-                    <li><a><i class="fa fa-edit"></i> Listado <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="listEjemplares.jsp">Lista de ejemplares</a></li>
-                        </ul>
-                    <li><a><i class="fa fa-desktop"></i>Acciones <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="ventaEjemplar.jsp">Vender cría</a></li>
-                            <li><a href="comprarEjemplar.jsp">Comprar ejemplar</a></li>
-
-                        </ul>
-                    </li>
-
-
-
+                    <li><a href="listEjemplares.jsp"><i class="fa fa-pencil-square"></i>Lista de ejemplares </a></li>
+                    <li><a href="ventaEjemplar.jsp"><i class="fa fa-paypal"></i>Vender cría </a></li>
+                    <li><a href="comprarEjemplar.jsp"><i class="fa fa-credit-card"></i>Comprar ejemplar </a></li>
                 </ul>
             </div>
 

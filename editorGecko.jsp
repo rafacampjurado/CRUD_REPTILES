@@ -5,17 +5,6 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    int id = Integer.valueOf(request.getParameter("id"));
-     Class.forName("com.mysql.jdbc.Driver");
-    Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/crud_reptiles", "root", "");
-    Statement s = conexion.createStatement();
-    ResultSet select = s.executeQuery("SELECT fase FROM crias WHERE codcria='"+id+"'");
-        String fase = "";
-        while(select.next()) {
-     fase = (select.getString("fase"));
-        }
-%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,6 +35,26 @@
 
         <!-- Custom Theme Style -->
         <link href="build/css/custom.min.css" rel="stylesheet">
+        <%
+            int id = Integer.valueOf(request.getParameter("id"));
+     Class.forName("com.mysql.jdbc.Driver");
+    Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/crud_reptiles", "root", "");
+    Statement s = conexion.createStatement();
+    ResultSet select = s.executeQuery("SELECT nombre,sexo,fase,especie,fechana FROM geckos WHERE codgecko='"+id+"'");
+    
+        String nombre = "";
+    String sexo= "";
+    String fase = "";
+    String especie = "";
+    String fechana = "";
+    while(select.next()) {
+     nombre = (select.getString("nombre"));
+     sexo = (select.getString("sexo"));
+     fase = (select.getString("fase"));
+     especie = (select.getString("especie"));
+     fechana = (select.getString("fechana"));
+    }
+    %>
     </head>
     <body class="nav-md">
         <div class="container body">
@@ -73,53 +82,81 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="text-center">
-                                <h1>Datos del comprador</h1> 
+                                <h1>Editar datos del ejemplar número <% out.print(id); %></h1> 
                             </div>
                             <div class="text-left">
                                 <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
-                                    <h2>Gecko seleccionado: <% out.print("número "+id+" fase "+fase);%></h2>
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
                                             <div class="x_panel">
                                                 <div class="x_content">
-                                                    <form action="compraCria.jsp" method="POST" id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                                                    <form action="editar.jsp" method="POST" id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span>
-                                                            </label>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Fecha de nacimiento</label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                <input type="text" id="nombre" name="nombre" required="required" class="form-control col-md-7 col-xs-12">
-                                                                <input type="int" id="codigoCria" name="codigoCria" hidden="hidden" value="<% out.print(id); %>">
+                                                                <input type="text" id="fechana" name="edad" required="required" class="form-control col-md-7 col-xs-12" placeholder="<% out.print(fechana);%>" value="<% out.print(fechana); %>">
+                                                                <input type="int" id="codigo" name="codigo" hidden="hidden" value="<% out.print(id); %>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Primer Apellido <span class="required">*</span>
-                                                            </label>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name" >Nombre</label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                <input type="text" id="apellidoUno" name="apellidoUno" required="required" class="form-control col-md-7 col-xs-12">
+                                                                <input type="text" id="nombre" name="nombre" required="required" class="form-control col-md-7 col-xs-12" placeholder="<% out.print(nombre);%> "value="<% out.print(nombre); %>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Segundo Apellido <span class="required">*</span>
-                                                            </label>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fase">Fase <span class="required">*</span></label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                <input type="text" id="apellidoDos" name="apellidoDos" required="required" class="form-control col-md-7 col-xs-12">
+                                                                <select name="fase" class="select2_group form-control">
+                                                                    <option label="<% out.print(fase);%>"><% out.print(fase);%>(actualmente)</option>
+                                                                    <optgroup label="Albino">
+                                                                        <option value="bellAlbino">Bell Albino</option>
+                                                                        <option value="rainwater">Rainwater</option>
+                                                                        <option value="tremperAlbino">Tremper Albino </option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Striped">
+                                                                        <option value="boldStriped">Bold striped</option>
+                                                                        <option value="rainingRedStripe">Raining Red Stripe</option>
+                                                                        <option value="redStriped">Red Striped</option>
+                                                                        <option value="reverseWyY">Reverse Striped White and Yellow Sykes Emerine</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Fase estándar">
+                                                                        <option value="aptor">Aptor</option>
+                                                                        <option value="bandit">Bandit  </option>
+                                                                        <option value="blizzard">Blizzard</option>
+                                                                        <option value="diabloBlanco">Diablo Blanco</option>
+                                                                        <option value="dreamsicle">Dreamsicle</option>
+                                                                        <option value="raptor">Raptor</option>
+                                                                        <option value="macksnow">Macksnow</option>
+                                                                        <option value="shtc">Super Hypo Tangerine Carrot Tail</option>
+                                                                    </optgroup>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">DNl</label>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fase">Raza <span class="required"></span></label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                <input id="dni" class="form-control col-md-7 col-xs-12" type="text" name="dni"maxLength="9">
+                                                                <select name="especie"class="select2_group form-control">
+                                                                    <option value="<% out.print(especie);%>"><% out.print(especie);%>(actualmente)</option>
+                                                                    <option value="angra">Eublepharis Angramainyu</option>
+                                                                    <option value="fuscus">Eublepharis Fuscus</option>
+                                                                    <option value="hardwicki">Eublepharis Hardwickii</option>
+                                                                    <option value="macularius">Eublepharis Macularius</option>
+
+                                                                </select>
                                                             </div>
                                                         </div>
+
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sexo</label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                                 <div id="gender" class="btn-group" data-toggle="buttons">
                                                                     <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                        <input type="radio" name="sexo" value="hombre" data-parsley-multiple="gender"> &nbsp; Hombre &nbsp;
+                                                                        <input type="radio" name="sexo" value="macho" data-parsley-multiple="gender"> &nbsp; Macho &nbsp;
                                                                     </label>
+                                                                    <input type="test" name="sexo" value="<% out.print(sexo); %>" hidden="hidden">
                                                                     <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                        <input type="radio" name="sexo" value="mujer" data-parsley-multiple="gender"> Mujer
+                                                                        <input type="radio" name="sexo" value="hembra" data-parsley-multiple="gender"> Hembra
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -128,8 +165,8 @@
                                                         <div class="ln_solid"></div>
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                                                <a href="ventaEjemplar.jsp"><button class="btn btn-primary" type="button">Cancelar compra</button></a>
-                                                                <button type="submit" class="btn btn-success">Realizar compra</button>
+                                                                <a href="listEjemplares.jsp"><button class="btn btn-primary" type="button">Cancelar cambios</button></a>
+                                                                <button type="submit" class="btn btn-success">Guardar cambios</button>
                                                             </div>
                                                         </div>
                                                     </form>

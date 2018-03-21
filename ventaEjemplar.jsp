@@ -82,8 +82,6 @@
                                                             <th>Sexo</th>
                                                             <th>Fase</th>
                                                             <th>Fecha de nacimiento</th> 
-                                                            <th>Acción</th>
-                                                            </thead>
                                                             <tbody>
                                                                 <%                                                                    ResultSet listado2 = s.executeQuery("SELECT * FROM crias WHERE estado='enVenta'");
 
