@@ -22,7 +22,7 @@ El trabajo constará de una base de datos con 3 tablas :
   - DNI
 
 ### Imágenes
-<img src="imagenes/scrt1.png" width="400px">
-<img src="imagenes/scrt2.png" width="400px">
-<img src="imagenes/scrt3.png" width="400px">
-<img src="imagenes/scrt4.png" width="400px">
+<img src="imagenes/scrt1.jpg" width="400px">
+<img src="imagenes/scrt2.jpg" width="400px">
+<img src="imagenes/scrt3.jpg" width="400px">
+<img src="imagenes/scrt4.jpg" width="400px">
