@@ -21,3 +21,8 @@ El trabajo constará de una base de datos con 3 tablas :
   - Apellidos
   - DNI
 
+### Imágenes
+<img src="imagenes/scrt1.png" width="400px">
+<img src="imagenes/scrt2.png" width="400px">
+<img src="imagenes/scrt3.png" width="400px">
+<img src="imagenes/scrt4.png" width="400px">
